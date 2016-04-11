@@ -31,5 +31,13 @@ class SafeIndexTests: XCTestCase {
         XCTAssertEqual(arr[^1], "B")
         XCTAssertEqual(arr[^2], "C")
         XCTAssertNil(arr[^3])
+      
+        var mutableArr = ["A", "B", "C"]
+        XCTAssertEqual(mutableArr[^0], "A")
+        XCTAssertEqual(mutableArr[^1], "B")
+        XCTAssertEqual(mutableArr[^2], "C")
+        XCTAssertNil(mutableArr[^3])
+        mutableArr[^2] = "D"
+        XCTAssertEqual(mutableArr[^2], "D")
     }
 }
