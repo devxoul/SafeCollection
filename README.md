@@ -1,7 +1,7 @@
 SafeIndex
 =========
 
-![Swift](https://img.shields.io/badge/Swift-2.2-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
 [![Build Status](https://travis-ci.org/devxoul/SafeIndex.svg)](https://travis-ci.org/devxoul/SafeIndex)
 [![CocoaPods](http://img.shields.io/cocoapods/v/SafeIndex.svg)](https://cocoapods.org/pods/SafeIndex)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -50,10 +50,10 @@ Installation
     import PackageDescription
 
     let package = Package(
-        name: "MyAwesomeApp",
-        dependencies: [
-            .Package(url: "https://github.com/devxoul/SafeIndex", "0.2.0"),
-        ]
+      name: "MyAwesomeApp",
+      dependencies: [
+        .Package(url: "https://github.com/devxoul/SafeIndex", "0.2.0"),
+      ]
     )
     ```
 
