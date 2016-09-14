@@ -20,19 +20,19 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 
-public struct SafeIndex<T: ForwardIndexType> {
+public struct SafeIndex<T: Comparable> {
     var index: T
     init(_ index: T) {
         self.index = index
     }
 }
 
-prefix operator ^ {}
-public prefix func ^ <T: ForwardIndexType>(index: T) -> SafeIndex<T> {
+prefix operator ^
+public prefix func ^ <T: Comparable>(index: T) -> SafeIndex<T> {
     return SafeIndex(index)
 }
 
-public extension MutableIndexable {
+public extension MutableCollection {
     public subscript(safe: SafeIndex<Self.Index>?) -> Self._Element? {
         get {
             guard let safe = safe else { return nil }
@@ -40,7 +40,10 @@ public extension MutableIndexable {
         }
       
         set {
-            guard let safe = safe, value = newValue where (self.startIndex..<self.endIndex).contains(safe.index) else { return }
+            guard let safe = safe,
+                  let value = newValue,
+                  self.startIndex..<self.endIndex ~= safe.index
+                  else { return }
             self[safe.index] = value
         }
     }
