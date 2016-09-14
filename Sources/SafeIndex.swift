@@ -21,30 +21,29 @@
 // SOFTWARE.
 
 public struct SafeIndex<T: Comparable> {
-    var index: T
-    init(_ index: T) {
-        self.index = index
-    }
+  var index: T
+  init(_ index: T) {
+    self.index = index
+  }
 }
 
 prefix operator ^
 public prefix func ^ <T: Comparable>(index: T) -> SafeIndex<T> {
-    return SafeIndex(index)
+  return SafeIndex(index)
 }
 
 public extension MutableCollection {
-    public subscript(safe: SafeIndex<Self.Index>?) -> Self._Element? {
-        get {
-            guard let safe = safe else { return nil }
-            return (self.startIndex..<self.endIndex).contains(safe.index) ? self[safe.index] : nil
-        }
-      
-        set {
-            guard let safe = safe,
-                  let value = newValue,
-                  self.startIndex..<self.endIndex ~= safe.index
-                  else { return }
-            self[safe.index] = value
-        }
+  public subscript(safe: SafeIndex<Self.Index>?) -> Self._Element? {
+    get {
+      guard let safe = safe else { return nil }
+      return (self.startIndex..<self.endIndex).contains(safe.index) ? self[safe.index] : nil
     }
+    set {
+      guard let safe = safe,
+        let value = newValue,
+        self.startIndex..<self.endIndex ~= safe.index
+        else { return }
+      self[safe.index] = value
+    }
+  }
 }
