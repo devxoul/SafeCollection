@@ -21,15 +21,151 @@
 // SOFTWARE.
 
 public struct SafeIndex<T: Comparable> {
-  var index: T
-  init(_ index: T) {
+  public var index: T
+  public init(_ index: T) {
     self.index = index
+  }
+}
+
+extension SafeIndex: CustomStringConvertible {
+  public var description: String {
+    return "^\(self.index)"
+  }
+}
+
+extension SafeIndex: CustomDebugStringConvertible {
+  public var debugDescription: String {
+    return "^\(self.index)"
+  }
+}
+
+extension SafeIndex: Equatable {
+  public static func == (lhs: SafeIndex<T>, rhs: SafeIndex<T>) -> Bool {
+    return lhs.index == rhs.index
+  }
+  public static func == (lhs: SafeIndex<T>, rhs: T) -> Bool {
+    return lhs.index == rhs
+  }
+  public static func == (lhs: T, rhs: SafeIndex<T>) -> Bool {
+    return lhs == rhs.index
+  }
+}
+
+extension SafeIndex: Comparable {
+  public static func < (lhs: SafeIndex<T>, rhs: SafeIndex<T>) -> Bool {
+    return lhs.index < rhs.index
+  }
+  public static func < (lhs: SafeIndex<T>, rhs: T) -> Bool {
+    return lhs.index < rhs
+  }
+  public static func < (lhs: T, rhs: SafeIndex<T>) -> Bool {
+    return lhs < rhs.index
+  }
+
+  public static func <= (lhs: SafeIndex<T>, rhs: SafeIndex<T>) -> Bool {
+    return lhs.index <= rhs.index
+  }
+  public static func <= (lhs: SafeIndex<T>, rhs: T) -> Bool {
+    return lhs.index <= rhs
+  }
+  public static func <= (lhs: T, rhs: SafeIndex<T>) -> Bool {
+    return lhs <= rhs.index
+  }
+
+  public static func >= (lhs: SafeIndex<T>, rhs: SafeIndex<T>) -> Bool {
+    return lhs.index >= rhs.index
+  }
+  public static func >= (lhs: SafeIndex<T>, rhs: T) -> Bool {
+    return lhs.index >= rhs
+  }
+  public static func >= (lhs: T, rhs: SafeIndex<T>) -> Bool {
+    return lhs >= rhs.index
+  }
+
+  public static func > (lhs: SafeIndex<T>, rhs: SafeIndex<T>) -> Bool {
+    return lhs.index > rhs.index
+  }
+  public static func > (lhs: SafeIndex<T>, rhs: T) -> Bool {
+    return lhs.index > rhs
+  }
+  public static func > (lhs: T, rhs: SafeIndex<T>) -> Bool {
+    return lhs > rhs.index
+  }
+}
+
+extension SafeIndex where T: IntegerArithmetic {
+  public static func + (lhs: SafeIndex<T>, rhs: SafeIndex<T>) -> SafeIndex<T> {
+    return SafeIndex(lhs.index + rhs.index)
+  }
+  public static func + (lhs: SafeIndex<T>, rhs: T) -> SafeIndex<T> {
+    return SafeIndex(lhs.index + rhs)
+  }
+  public static func + (lhs: T, rhs: SafeIndex<T>) -> SafeIndex<T> {
+    return SafeIndex(lhs + rhs.index)
+  }
+
+  public static func - (lhs: SafeIndex<T>, rhs: SafeIndex<T>) -> SafeIndex<T> {
+    return SafeIndex(lhs.index - rhs.index)
+  }
+  public static func - (lhs: SafeIndex<T>, rhs: T) -> SafeIndex<T> {
+    return SafeIndex(lhs.index - rhs)
+  }
+  public static func - (lhs: T, rhs: SafeIndex<T>) -> SafeIndex<T> {
+    return SafeIndex(lhs - rhs.index)
+  }
+
+  public static func * (lhs: SafeIndex<T>, rhs: SafeIndex<T>) -> SafeIndex<T> {
+    return SafeIndex(lhs.index * rhs.index)
+  }
+  public static func * (lhs: SafeIndex<T>, rhs: T) -> SafeIndex<T> {
+    return SafeIndex(lhs.index * rhs)
+  }
+  public static func * (lhs: T, rhs: SafeIndex<T>) -> SafeIndex<T> {
+    return SafeIndex(lhs * rhs.index)
+  }
+
+  public static func / (lhs: SafeIndex<T>, rhs: SafeIndex<T>) -> SafeIndex<T> {
+    return SafeIndex(lhs.index / rhs.index)
+  }
+  public static func / (lhs: SafeIndex<T>, rhs: T) -> SafeIndex<T> {
+    return SafeIndex(lhs.index / rhs)
+  }
+  public static func / (lhs: T, rhs: SafeIndex<T>) -> SafeIndex<T> {
+    return SafeIndex(lhs / rhs.index)
+  }
+
+  public static func % (lhs: SafeIndex<T>, rhs: SafeIndex<T>) -> SafeIndex<T> {
+    return SafeIndex(lhs.index % rhs.index)
+  }
+  public static func % (lhs: SafeIndex<T>, rhs: T) -> SafeIndex<T> {
+    return SafeIndex(lhs.index % rhs)
+  }
+  public static func % (lhs: T, rhs: SafeIndex<T>) -> SafeIndex<T> {
+    return SafeIndex(lhs % rhs.index)
+  }
+
+  public func toIntMax() -> IntMax {
+    return self.index.toIntMax()
   }
 }
 
 prefix operator ^
 public prefix func ^ <T: Comparable>(index: T) -> SafeIndex<T> {
   return SafeIndex(index)
+}
+
+prefix operator ^-
+public prefix func ^- <T: Integer>(index: T) -> SafeIndex<T> {
+  return SafeIndex(-1 * index)
+}
+
+public extension Collection {
+  public subscript(safe: SafeIndex<Self.Index>?) -> Self._Element? {
+    get {
+      guard let safe = safe else { return nil }
+      return (self.startIndex..<self.endIndex).contains(safe.index) ? self[safe.index] : nil
+    }
+  }
 }
 
 public extension MutableCollection {
