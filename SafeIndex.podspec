@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "SafeIndex"
-  s.version          = "0.2.0"
+  s.version          = "1.0.0"
   s.summary          = "Optional Index for Swift"
   s.homepage         = "https://github.com/devxoul/SafeIndex"
   s.license          = { :type => "MIT", :file => "LICENSE" }
