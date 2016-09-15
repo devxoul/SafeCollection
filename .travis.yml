@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode7
+osx_image: xcode8
 script:
-    - xctool -scheme 'SafeIndex-iOS' -sdk iphonesimulator CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO test -parallelize
-    - xctool -scheme 'SafeIndex-OSX' test -parallelize
+  - xcodebuild -scheme 'SafeIndex' -sdk iphonesimulator CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO test | xcpretty -c
+  - xcodebuild -scheme 'SafeIndex-OSX' test | xcpretty -c
