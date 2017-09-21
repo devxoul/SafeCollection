@@ -1,7 +1,7 @@
 SafeIndex
 =========
 
-![Swift](https://img.shields.io/badge/Swift-3.0-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
 [![Build Status](https://travis-ci.org/devxoul/SafeIndex.svg)](https://travis-ci.org/devxoul/SafeIndex)
 [![CocoaPods](http://img.shields.io/cocoapods/v/SafeIndex.svg)](https://cocoapods.org/pods/SafeIndex)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -38,12 +38,6 @@ Installation
     github "devxoul/SafeIndex" ~> 1.0
     ```
 
-- **For iOS 7 projects** with [CocoaSeeds](https://github.com/devxoul/CocoaSeeds):
-
-    ```ruby
-    github 'devxoul/SafeIndex', '1.0.0', :files => 'Sources/*.swift'
-    ```
-
 - **Using [Swift Package Manager](https://swift.org/package-manager)**:
 
     ```swift
@@ -52,7 +46,7 @@ Installation
     let package = Package(
       name: "MyAwesomeApp",
       dependencies: [
-        .Package(url: "https://github.com/devxoul/SafeIndex", "1.0.0"),
+        .package(url: "https://github.com/devxoul/SafeIndex", "1.0.0"),
       ]
     )
     ```

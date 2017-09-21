@@ -93,7 +93,7 @@ extension SafeIndex: Comparable {
   }
 }
 
-extension SafeIndex where T: IntegerArithmetic {
+extension SafeIndex where T: BinaryInteger {
   public static func + (lhs: SafeIndex<T>, rhs: SafeIndex<T>) -> SafeIndex<T> {
     return SafeIndex(lhs.index + rhs.index)
   }
@@ -144,8 +144,8 @@ extension SafeIndex where T: IntegerArithmetic {
     return SafeIndex(lhs % rhs.index)
   }
 
-  public func toIntMax() -> IntMax {
-    return self.index.toIntMax()
+  public func toIntMax() -> Int64 {
+    return Int64(self.index)
   }
 }
 
@@ -155,12 +155,12 @@ public prefix func ^ <T: Comparable>(index: T) -> SafeIndex<T> {
 }
 
 prefix operator ^-
-public prefix func ^- <T: Integer>(index: T) -> SafeIndex<T> {
+public prefix func ^- <T: BinaryInteger>(index: T) -> SafeIndex<T> {
   return SafeIndex(-1 * index)
 }
 
 public extension Collection {
-  public subscript(safe: SafeIndex<Self.Index>?) -> Self._Element? {
+  public subscript(safe: SafeIndex<Self.Index>?) -> Self.Element? {
     get {
       guard let safe = safe else { return nil }
       return (self.startIndex..<self.endIndex).contains(safe.index) ? self[safe.index] : nil
@@ -169,7 +169,7 @@ public extension Collection {
 }
 
 public extension MutableCollection {
-  public subscript(safe: SafeIndex<Self.Index>?) -> Self._Element? {
+  public subscript(safe: SafeIndex<Self.Index>?) -> Self.Element? {
     get {
       guard let safe = safe else { return nil }
       return (self.startIndex..<self.endIndex).contains(safe.index) ? self[safe.index] : nil
