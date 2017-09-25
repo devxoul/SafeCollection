@@ -26,63 +26,17 @@ import SafeIndex
 class SafeIndexTests: XCTestCase {
   func testSafeIndex() {
     let arr = ["A", "B", "C"]
-    XCTAssertEqual(arr[^0], "A")
-    XCTAssertEqual(arr[^1], "B")
-    XCTAssertEqual(arr[^2], "C")
-    XCTAssertNil(arr[^3])
+    XCTAssertEqual(arr[safe: 0], "A")
+    XCTAssertEqual(arr[safe: 1], "B")
+    XCTAssertEqual(arr[safe: 2], "C")
+    XCTAssertNil(arr[safe: 3])
 
     var mutableArr = ["A", "B", "C"]
-    XCTAssertEqual(mutableArr[^0], "A")
-    XCTAssertEqual(mutableArr[^1], "B")
-    XCTAssertEqual(mutableArr[^2], "C")
-    XCTAssertNil(mutableArr[^3])
-    mutableArr[^2] = "D"
-    XCTAssertEqual(mutableArr[^2], "D")
-  }
-
-  func testSafeIndexMinus() {
-    XCTAssertEqual(^-5, ^(-5))
-  }
-
-  func testSafeIndexEquatable() {
-    XCTAssertTrue(^5 == ^5)
-    XCTAssertTrue(^3 == 3)
-    XCTAssertTrue(2 == ^2)
-  }
-
-  func testSafeIndexComparable() {
-    XCTAssertTrue(^5 > ^4)
-    XCTAssertTrue(5 > 4)
-    XCTAssertTrue(5 > ^4)
-
-    XCTAssertTrue(^3 >= ^3)
-    XCTAssertTrue(^3 >= 3)
-    XCTAssertTrue(3 >= ^3)
-
-    XCTAssertTrue(^4 < ^6)
-    XCTAssertTrue(^4 < 6)
-    XCTAssertTrue(4 < ^6)
-
-    XCTAssertTrue(^6 <= ^6)
-    XCTAssertTrue(^6 <= 6)
-    XCTAssertTrue(6 <= ^6)
-  }
-
-  func testSafeIndexArithmetic() {
-    XCTAssertEqual(^5, ^2 + ^3)
-    XCTAssertEqual(^11, ^10 + 1)
-    XCTAssertEqual(^12, 2 + ^10)
-
-    XCTAssertEqual(^1, ^3 - ^2)
-    XCTAssertEqual(^9, ^10 - 1)
-    XCTAssertEqual(^3, 11 - ^8)
-
-    XCTAssertEqual(^6, ^2 * ^3)
-    XCTAssertEqual(^20, ^10 * 2)
-    XCTAssertEqual(^30, 3 * ^10)
-
-    XCTAssertEqual(^2, ^6 / ^3)
-    XCTAssertEqual(^3, ^10 / 3)
-    XCTAssertEqual(^6, 20 / ^3)
+    XCTAssertEqual(mutableArr[safe: 0], "A")
+    XCTAssertEqual(mutableArr[safe: 1], "B")
+    XCTAssertEqual(mutableArr[safe: 2], "C")
+    XCTAssertNil(mutableArr[safe: 3])
+    mutableArr[safe: 2] = "D"
+    XCTAssertEqual(mutableArr[safe: 2], "D")
   }
 }
