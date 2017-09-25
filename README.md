@@ -18,8 +18,8 @@ let arr = ["A", "B", "C"]
 arr[0]    // "A"
 arr[100]  // fatal error: Array index out of range 😟
 
-arr[^0]   // Optional("A")
-arr[^100] // nil 😄
+arr[safe: 0]   // Optional("A")
+arr[safe: 100] // nil 😄
 ```
 
 
@@ -29,13 +29,13 @@ Installation
 - **For iOS 8+ projects** with [CocoaPods](https://cocoapods.org):
 
     ```ruby
-    pod 'SafeIndex', '~> 1.0'
+    pod 'SafeIndex'
     ```
 
 - **For iOS 8+ projects** with [Carthage](https://github.com/Carthage/Carthage):
 
     ```
-    github "devxoul/SafeIndex" ~> 1.0
+    github "devxoul/SafeIndex"
     ```
 
 - **Using [Swift Package Manager](https://swift.org/package-manager)**:
