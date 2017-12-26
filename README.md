@@ -5,8 +5,7 @@
 [![CocoaPods](http://img.shields.io/cocoapods/v/SafeCollection.svg)](https://cocoapods.org/pods/SafeCollection)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-SafeCollection provides a safer way to deal with subscripts.
-
+SafeCollection provides a safer way to deal with subscripts. Inspired by Swift's [LazyCollection](https://developer.apple.com/documentation/swift/lazycollection).
 
 ## At a Glance
 
