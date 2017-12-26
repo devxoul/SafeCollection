@@ -3,12 +3,12 @@
 import PackageDescription
 
 let package = Package(
-  name: "SafeIndex",
+  name: "SafeCollection",
   products: [
-    .library(name: "SafeIndex", targets: ["SafeIndex"]),
+    .library(name: "SafeCollection", targets: ["SafeCollection"]),
   ],
   targets: [
-    .target(name: "SafeIndex"),
-    .testTarget(name: "SafeIndexTests", dependencies: ["SafeIndex"]),
+    .target(name: "SafeCollection"),
+    .testTarget(name: "SafeCollectionTests", dependencies: ["SafeCollection"]),
   ]
 )

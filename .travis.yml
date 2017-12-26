@@ -3,13 +3,13 @@ language: objective-c
 sudo: required
 env:
   global:
-    - PROJECT="SafeIndex.xcodeproj"
-    - SCHEME="SafeIndex-Package"
+    - PROJECT="SafeCollection.xcodeproj"
+    - SCHEME="SafeCollection-Package"
     - IOS_SDK="iphonesimulator11.0"
     - MACOS_SDK="macosx10.13"
     - TVOS_SDK="appletvsimulator11.0"
     - WATCHOS_SDK="watchsimulator4.0"
-    - FRAMEWORK="SafeIndex"
+    - FRAMEWORK="SafeCollection"
   matrix:
     - SDK="$IOS_SDK"      TEST=1  DESTINATION="platform=iOS Simulator,name=iPhone 8,OS=11.0"
     - SDK="$MACOS_SDK"    TEST=1  DESTINATION="arch=x86_64"
@@ -46,5 +46,5 @@ script:
 
 after_success:
   - if [ $TEST == 1 ]; then
-      bash <(curl -s https://codecov.io/bash) -X xcodeplist -J 'SafeIndex';
+      bash <(curl -s https://codecov.io/bash) -X xcodeplist -J 'SafeCollection';
     fi

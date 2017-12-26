@@ -1,11 +1,11 @@
 Pod::Spec.new do |s|
-  s.name             = "SafeIndex"
+  s.name             = "SafeCollection"
   s.version          = "2.0.0"
-  s.summary          = "Optional Index for Swift"
-  s.homepage         = "https://github.com/devxoul/SafeIndex"
+  s.summary          = "Safe Collection for Swift"
+  s.homepage         = "https://github.com/devxoul/SafeCollection"
   s.license          = { :type => "MIT", :file => "LICENSE" }
   s.author           = { "Suyeol Jeon" => "devxoul@gmail.com" }
-  s.source           = { :git => "https://github.com/devxoul/SafeIndex.git",
+  s.source           = { :git => "https://github.com/devxoul/SafeCollection.git",
                          :tag => s.version.to_s }
   s.source_files     = "Sources/**/*.swift"
   s.requires_arc     = true

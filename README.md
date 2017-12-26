@@ -1,16 +1,14 @@
-SafeIndex
-=========
+# SafeCollection
 
 ![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
-[![Build Status](https://travis-ci.org/devxoul/SafeIndex.svg)](https://travis-ci.org/devxoul/SafeIndex)
-[![CocoaPods](http://img.shields.io/cocoapods/v/SafeIndex.svg)](https://cocoapods.org/pods/SafeIndex)
+[![Build Status](https://travis-ci.org/devxoul/SafeCollection.svg)](https://travis-ci.org/devxoul/SafeCollection)
+[![CocoaPods](http://img.shields.io/cocoapods/v/SafeCollection.svg)](https://cocoapods.org/pods/SafeCollection)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
-Optional Index for Swift.
+SafeCollection provides a safer way to deal with subscripts.
 
 
-At a Glance
------------
+## At a Glance
 
 ```swift
 let arr = ["A", "B", "C"]
@@ -18,24 +16,22 @@ let arr = ["A", "B", "C"]
 arr[0]    // "A"
 arr[100]  // fatal error: Array index out of range 😟
 
-arr[safe: 0]   // Optional("A")
-arr[safe: 100] // nil 😄
+arr.safe[0]   // Optional("A")
+arr.safe[100] // nil 😄
 ```
 
-
-Installation
-------------
+## Installation
 
 - **For iOS 8+ projects** with [CocoaPods](https://cocoapods.org):
 
     ```ruby
-    pod 'SafeIndex'
+    pod 'SafeCollection'
     ```
 
 - **For iOS 8+ projects** with [Carthage](https://github.com/Carthage/Carthage):
 
     ```
-    github "devxoul/SafeIndex"
+    github "devxoul/SafeCollection"
     ```
 
 - **Using [Swift Package Manager](https://swift.org/package-manager)**:
@@ -46,13 +42,11 @@ Installation
     let package = Package(
       name: "MyAwesomeApp",
       dependencies: [
-        .package(url: "https://github.com/devxoul/SafeIndex", "1.0.0"),
+        .package(url: "https://github.com/devxoul/SafeCollection", "1.0.0"),
       ]
     )
     ```
 
+## License
 
-License
--------
-
-SafeIndex is under MIT license. See the [LICENSE](LICENSE) file for more info.
+SafeCollection is under MIT license. See the [LICENSE](LICENSE) file for more info.
