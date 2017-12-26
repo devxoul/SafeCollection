@@ -42,7 +42,7 @@ arr.safe[100] // nil 😄
     let package = Package(
       name: "MyAwesomeApp",
       dependencies: [
-        .package(url: "https://github.com/devxoul/SafeCollection", "1.0.0"),
+        .package(url: "https://github.com/devxoul/SafeCollection", .upToNextMajor(from: "3.0.0")),
       ]
     )
     ```

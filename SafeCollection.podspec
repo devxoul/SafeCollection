@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "SafeCollection"
-  s.version          = "2.0.0"
+  s.version          = "3.0.0"
   s.summary          = "Safe Collection for Swift"
   s.homepage         = "https://github.com/devxoul/SafeCollection"
   s.license          = { :type => "MIT", :file => "LICENSE" }
