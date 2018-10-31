@@ -1,6 +1,6 @@
 # SafeCollection
 
-![Swift](https://img.shields.io/badge/Swift-4.0-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-4.2-orange.svg)
 [![Build Status](https://travis-ci.org/devxoul/SafeCollection.svg)](https://travis-ci.org/devxoul/SafeCollection)
 [![CocoaPods](http://img.shields.io/cocoapods/v/SafeCollection.svg)](https://cocoapods.org/pods/SafeCollection)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
