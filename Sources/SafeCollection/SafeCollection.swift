@@ -62,13 +62,13 @@ public struct SafeMutableCollection<C>: MutableCollection where C: MutableCollec
 }
 
 public extension Collection {
-  public var safe: SafeCollection<Self> {
+  var safe: SafeCollection<Self> {
     return .init(self)
   }
 }
 
 public extension MutableCollection {
-  public var safe: SafeMutableCollection<Self> {
+  var safe: SafeMutableCollection<Self> {
     get { return .init(self) }
     set { self = newValue.collection }
   }
